@@ -10,6 +10,7 @@ var board = [
 	[0,0,0,0,0]
 ]
 
+var spot;
 function rand(num){
 	//takes a number argument and returns a random whole number between 0 and the argument
 	return Math.floor(Math.random()*num);
@@ -18,7 +19,10 @@ function rand(num){
 function setup(){
 	createCanvas(500,500);
 	// randomly assign 1 spot to be a ship
-	board[rand(5)][rand(5)] = 1;
+	spot = {
+		"x":rand(5),
+		"y":rand(5)
+	}
 }
 
 function draw(){
@@ -32,7 +36,11 @@ function draw(){
 			//each item in array
 			if(board[i][k]!=0){
 				//not a blank, a.k.a. spot with a ship
-				fill(225,0,0); //will change color of drawn square
+				if(board[i][k]==1){
+					fill(225,0,0); //will change color of drawn square
+				}else{
+					fill(0,0,225); //will change color of drawn square
+				}
 			}else{
 				//blank
 				fill(225,225,225);
@@ -42,4 +50,12 @@ function draw(){
 		}
 	}
 	
+}
+
+function mouseClicked(){
+	if(spot.x==floor(mouseX/100) && spot.y==floor(mouseY/100)){
+		board[floor(mouseX/100)][floor(mouseY/100)]=1; //hit
+	}else{
+		board[floor(mouseX/100)][floor(mouseY/100)]=2; //miss
+	}
 }
