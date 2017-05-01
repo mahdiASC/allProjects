@@ -46,7 +46,7 @@ function draw(){
 				fill(225,225,225);
 			}
 			//position in board array reflected in x, y coordinate by multiplying index for row and column
-			rect(100*i, 100*k, 100,100);
+			rect(100*i, 100*k, 40,40);
 		}
 	}
 	
