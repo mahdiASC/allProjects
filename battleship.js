@@ -2,6 +2,9 @@
 
 //Making board a 2D nested array
 // 0 means blank, 1 means ship
+
+var boxSize = 40;
+
 var board = [
 	[0,0,0,0,0],
 	[0,0,0,0,0],
@@ -46,7 +49,7 @@ function draw(){
 				fill(225,225,225);
 			}
 			//position in board array reflected in x, y coordinate by multiplying index for row and column
-			rect(100*i, 100*k, 40,40);
+			rect(boxSize*i, boxSize*k, boxSize,boxSize);
 		}
 	}
 	
