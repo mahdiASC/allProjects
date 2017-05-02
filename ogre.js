@@ -1,13 +1,3 @@
-// Plan
-// Introduce User to story
-// Start Round
-//      Show current stats of player
-//          HP
-//          gold
-//          number of ogres slain
-//      Generate Ogre
-//      Give player two options, to fight or to flee
-
 function randItem(array){
     //returns a random item from the array
     return array[Math.floor(Math.random()*array.length)];
@@ -48,8 +38,7 @@ function showStats(){
 }
 
 var ogreImg = ['assets/ogre1.png','assets/ogre2.png','assets/ogre3.png']
-function startRound(){
-    showStats();
+function nextOgre(){
     //image
     $('#ogres').prepend(
         "<img src=" + randItem(ogreImg) + ">"
@@ -63,19 +52,33 @@ function attack(){
         //if random number between 0 and 100 is greater than the amount of gold player has
         //player wins against ogre and gets 10 gold
         gold = gold +10;
-
+        numSlain++;
         //add "win" text above ogre
         $('#ogres').prepend(
             "<p style='color:blue'>You won! + 10 gold.</p>"
         );  
     }else{
-        //lose and player loses 1 gold
+        //lose and player loses 1 gold and 1 HP
         gold--; //
+        HP--;
         //add "loss" text above ogre
         $('#ogres').prepend(
             "<p style='color:red'>You lost! - 1 gold.</p>"
         );
     }
-
-    startRound();
+    showStats();
+    if(HP>0){
+        // keep playing as long as you have HP
+        nextOgre();
+    }else{
+        //game over
+        $('#ogres').prepend(
+            "<h1>GAME OVER!</h1>"
+        );
+    }
 }
+
+//Starting game once html has loaded and is ready
+$(document).ready(function(){
+  intro();
+})
