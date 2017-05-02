@@ -3,7 +3,7 @@
 //Making board a 2D nested array
 // 0 means blank, 1 means ship
 
-var boxSize = 40;
+var boxSize = 60;
 
 var board = [
 	[0,0,0,0,0],
@@ -20,7 +20,7 @@ function rand(num){
 }
 
 function setup(){
-	createCanvas(500,500);
+	createCanvas(boxSize*5,boxSize*5);
 	// randomly assign 1 spot to be a ship
 	spot = {
 		"x":rand(5),
@@ -56,9 +56,9 @@ function draw(){
 }
 
 function mouseClicked(){
-	if(spot.x==floor(mouseX/100) && spot.y==floor(mouseY/100)){
-		board[floor(mouseX/100)][floor(mouseY/100)]=1; //hit
+	if(spot.x==floor(mouseX/boxSize) && spot.y==floor(mouseY/boxSize)){
+		board[floor(mouseX/boxSize)][floor(mouseY/boxSize)]=1; //hit
 	}else{
-		board[floor(mouseX/100)][floor(mouseY/100)]=2; //miss
+		board[floor(mouseX/boxSize)][floor(mouseY/boxSize)]=2; //miss
 	}
 }
