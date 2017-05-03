@@ -46,29 +46,29 @@ function nextOgre(){
 }
 
 function attack(){
-    //will check the user's money and use that to determine how easy ogre is to defeat
-    //win/loss added as text and next round activated
-    if(Math.random()*100>gold){
-        //if random number between 0 and 100 is greater than the amount of gold player has
-        //player wins against ogre and gets 10 gold
-        gold = gold +10;
-        numSlain++;
-        //add "win" text above ogre
-        $('#ogres').prepend(
-            "<p style='color:blue'>You won! + 10 gold.</p>"
-        );  
-    }else{
-        //lose and player loses 1 gold and 1 HP
-        gold--; //
-        HP--;
-        //add "loss" text above ogre
-        $('#ogres').prepend(
-            "<p style='color:red'>You lost! - 1 gold.</p>"
-        );
-    }
-    showStats();
+    // keep playing as long as you have HP
     if(HP>0){
-        // keep playing as long as you have HP
+        //will check the user's money and use that to determine how easy ogre is to defeat
+        //win/loss added as text and next round activated
+        if(Math.random()*100>gold){
+            //if random number between 0 and 100 is greater than the amount of gold player has
+            //player wins against ogre and gets 10 gold
+            gold = gold +10;
+            numSlain++;
+            //add "win" text above ogre
+            $('#ogres').prepend(
+                "<p style='color:blue'>You won! + 10 gold.</p>"
+            );  
+        }else{
+            //lose and player loses 1 gold and 1 HP
+            gold--; //
+            HP--;
+            //add "loss" text above ogre
+            $('#ogres').prepend(
+                "<p style='color:red'>You lost! - 1 gold.</p>"
+            );
+        }
+        showStats();
         nextOgre();
     }else{
         //game over
