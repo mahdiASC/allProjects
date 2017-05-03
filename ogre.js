@@ -27,7 +27,7 @@ function intro(){
     $("body").append(
         "<div id='ogres'></div>"
     );
-    startRound();
+    nextOgre();
 }
 
 var HP =100;
